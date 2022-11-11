@@ -118,6 +118,20 @@
     - messagebody의 경우 string 형태로 존재하기에 해당 객체를 지정한 HelloData 클래스의 Json 형식으로 변경하기 위한 도구
     - ObjectMapper의 경우 복잡하거나 가독성이 떨어지는 api응답을 reform하여 클라이언트단으로 넘겨줄때 사용
 
+## Servlet Response
+
+- Response-Header
+  - Request와 비슷한 구조
+  - request 요청이 들어올때 생성된 HttpServletResponse 객체를 사용
+  - 응답의 상태코드 및 content를 직접 지정해 줄 수 있음
+  - 사용자가 만든 임의의 헤더를 response 헤더내에 위치시킬수도 있음
+  - 캐시에 대한 사용여부 또한 직접 조정가능
+- Response-Body
+  - 텍스트/HTML 응답과 Json형식 데이터 응답으로 나뉠 수 있음
+  - Json형식의 데이터는 ObjectMapper를 사용.
+    - contentType과 encoding 타입을 지정해주고 원하는 데이터 형식의 객체를 생성
+    - ObjectMapper를 이용해서 JSON형태인 DTO 데이터를 String으로 response에 넣어주면 됨
+
 ---
 
 # 스프링이란?
