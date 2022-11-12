@@ -132,6 +132,20 @@
     - contentType과 encoding 타입을 지정해주고 원하는 데이터 형식의 객체를 생성
     - ObjectMapper를 이용해서 JSON형태인 DTO 데이터를 String으로 response에 넣어주면 됨
 
+## DAO, DTO, VO
+
+- DAO(Data Access Object)
+  - 데이터베이스의 data에 접근하기 위한 객체
+  - 데이터베이스에 접근하기 위한 로직, 비지니스 로직을 분리하기 위해 사용
+- DTO(Data Transfer Object)
+  - 계층 간 데이터 교환을 하기 위해 사용하는 객체. 로직을 가지지 않는 순수한 데이터 객체
+  - 유저가 입력한 데이터를 DB에 넣는 과정
+    - 유저가 자신의 브라우저에서 데이터를 입력하여 form에 있는 데이터를 DTO에 넣어서 전송.
+    - 해당 DTO를 받은 서버가 DAO를 사용하여 데이터베이스로 넣음.
+- VO(Value Object)
+  - 값을 위해 쓰임. read-only 특징을 가짐
+  - DTO와 유사하지만 DTO는 setter를 가지고 있어 값이 변할 수 있음
+
 ---
 
 # 스프링이란?
