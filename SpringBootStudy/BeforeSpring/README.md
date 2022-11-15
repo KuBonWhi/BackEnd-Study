@@ -194,3 +194,31 @@
 
 - 3. 표현
   - Client와 server가 데이터를 주고받는 형태로 JSON, XML 등이 있음
+
+### REST의 특징
+
+- 1. Server - Client 구조
+- 2. Stateless(무상태)
+  - HTTP 프로토콜은 Stateless Protocol이므로 REST 역시 무상태성
+  - Client의 context를 Server에 저장하지 않음
+    - 즉, 세션과 쿠키와 같은 context 정보를 신경쓰지 않아도 되므로 구현이 단순
+  - Server는 각각의 요청을 완전히 별개의 것으로 인식하고 처리
+    - 각 API 서버는 Client의 요청만을 단순 처리
+    - 즉, 이전 요청이 다음 요청의 처리에 연관되어서는 안됨
+    - Server의 처리 방식에 일관성을 부여하기 때문에 서비스의 자유도가 높아짐
+- 3. Cacheable(캐시 처리 기능)
+  - 웹 표준 HTTP 프로토콜을 그대로 사용하므로 웹에서 사용하는 기존의 인프라를 그대로 활용
+    - 즉, HTTP가 가진 가장 강력한 특징 중 하나인 캐싱 기능을 적용
+  - 대량의 요청을 효율적으로 처리
+- 4. Layered System (계층 구조)
+  - Client는 REST API Server만 호출
+  - REST Server는 다중 계층으로 구성할 수 있음
+    - 보안, 로드 밸런싱, 암호화 등을 위한 계층을 추가하여 구조를 변경
+    - Proxy, Gateway와 같은 네트워크 기반의 중간매체를 사용
+    - Client는 Server와 직접 통신하는지, 중간 서버와 통신하는지는 알 수 없음
+- 5. Uniform Interface (인터페이스 일관성)
+  - URI로 지정한 Resource에 대한 요청을 통일되고, 한정적으로 수행하는 아키텍처 스타일
+  - HTTP 표준 프로토콜에 따르는 모든 플랫폼에서 사용이 가능하며, Loosely Coupling(느슨한 결함) 형태
+    - 즉, 특정 언어나 기술에 종속되지 않음
+- 6. Self-Descriptiveness (자체 표현)
+  - 요청 메시지만 보고도 쉽게 이해할 수 있는 자체 표현 구조
