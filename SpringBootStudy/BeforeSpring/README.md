@@ -250,3 +250,20 @@
 ### REST API 요약
 
 - URI는 정보의 자원만 표현해야 하며, 자원의 행위는 HTTP Method에 명시한다
+
+# 스프링 구조
+
+## 1. src/main/java 디렉터리
+
+- 기존의 스프링 레가시와 마찬가지로 클래스, 인터페이스 등 자바 파일이 위치하는 디렉터리
+
+## 2. BoardApplication 클래스
+
+- Board 프로젝트의 com.board 패키지에는 생성하지 않은 BoardApplication 클래스가 포함.
+- main( ) 메서드는 SpringApplication.run( )을 호출해서 웹 애플리케이션을 실행하는 역할
+- 클래스 선언부에 선언된 @SpringBootAplication
+  |애너테이션|설명|
+  |:---:|:---|
+  |@EnableAutoConfiguration|스프링 부트는 개발에 필요한 몇 가지 필수적인 설정들의 처리. 해당 애너테이션에 의해 다양한 설정들의 일부가 자동으로 완료|
+  |@ComponentScan|기존의 XML 설정 방식의 스프링은 빈(Bean)의 등록 및 스캔을 위해 수동으로 ComponentScan을 여러 개 선언하는 방식을 사용. 스프링 부트는 해당 애너테이션에 의해 자동으로 컴포넌트 클래스를 검색하고, 스프링 애플리케이션 콘텍스트(IoC 컨테이너)에 빈(Bean)으로 등록. 즉, 의존성 주입 과정이 간편해 짐|
+  |@Configuration|해당 애너테이션이 선언된 클래스는 자바 기반의 설정 파일로 인식|
