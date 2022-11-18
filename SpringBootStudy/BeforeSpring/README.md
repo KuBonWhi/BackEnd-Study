@@ -267,3 +267,25 @@
   |@EnableAutoConfiguration|스프링 부트는 개발에 필요한 몇 가지 필수적인 설정들의 처리. 해당 애너테이션에 의해 다양한 설정들의 일부가 자동으로 완료|
   |@ComponentScan|기존의 XML 설정 방식의 스프링은 빈(Bean)의 등록 및 스캔을 위해 수동으로 ComponentScan을 여러 개 선언하는 방식을 사용. 스프링 부트는 해당 애너테이션에 의해 자동으로 컴포넌트 클래스를 검색하고, 스프링 애플리케이션 콘텍스트(IoC 컨테이너)에 빈(Bean)으로 등록. 즉, 의존성 주입 과정이 간편해 짐|
   |@Configuration|해당 애너테이션이 선언된 클래스는 자바 기반의 설정 파일로 인식|
+
+## 3. src/main/resources 디렉터리
+
+- 스프링 부트는 templates 폴더, static 폴더, application.properties 파일이 기본적으로 생성
+  |폴더 및 파일|설명|
+  |:---:|:---:|
+  |templates|기존의 스프링은 HTML 내에 자바 코드를 삽입하는 방식의 JSP를 사용. 스프링 부트는 src/main/resources 디렉터리 내에서 화면과 관련된 파일을 관리. 스프링 부트는 타임리프(Thymeleaf) 템플릿 엔진의 사용을 권장. |
+  |static|css, fonts, images, plugin, scripts 등의 정적 리소스 파일|
+  |application.properties|웹 애플리케이션을 실행시 자동으로 로딩되는 파일. 설정을 Key-value 형식으로 지정해서 처리|
+
+## src/test/java 디렉터리
+
+- 해당 디렉터리의 com.board 패키지에는 BoardApplicationTests 클래스가 생성
+  - 해당 클래스를 이용해서 각각의 개발 단계에 알맞은 단위 테스트를 진행
+
+## build.gradle
+
+- 기존의 스프링은 pom.xml에 여러 개의 dependency를 추가해서 라이브러리를 관리하는 방식의
+  메이븐(Maven)을 이용
+- 라이브러리의 버전 문제, 충돌 문제, 종속적인 문제 등 메이븐을 사용하면 여러 문제 발생
+- 요즘은 Gradle 사용하는 추세
+- 해당 파일에 추가된 라이브러리는 Project and External Dependencies에서 확인 가능
