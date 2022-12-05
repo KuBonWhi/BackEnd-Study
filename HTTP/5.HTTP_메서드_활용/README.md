@@ -21,3 +21,26 @@
   - 서버에서는 쿼리 파라미터를 기반으로 필터나 검색 결과 등 처리 결과를 응답해 준다
   - 조회는 GET을 사용한다.
   - GET은 쿼리 파라미터를 사용해서 데이터를 전달한다.
+- 3. HTML Form을 통한 데이터 전송
+  - 회원 가입, 상품 주문, 데이터 변경
+  - 웹 브라우저는 submit 버튼을 누르면 From 태그의 정보를 취합해 action에 작성된 경로로 해당 method 타입의 요청을 하게 되는데, Content-Type을 보면 x-www-form-urlencoded 라고 되어있다
+  - 쿼리 파라미터와 거의 동일한 방식으로 서버에 전송된다
+  - urlencoded로 되있어서 body에 담긴 내용에서 한글처럼 담긴 내용이 인코딩되어 넘어간다.
+  - 만약 method타입이 get으로 되어있다면 메세지 바디에 담겨있는 내용이 query string으로 path 뒤에 조합된다.
+  - 파일이나 이미지같은 자료는 어떻게 전송되는가?
+    - enctype을 multipart/form-data로 작성해 해당 폼에 파일이 있다는 것을 표시한다.
+    - multipart/form-data 형식이라면 HTTP 메세지에 임의의 구분자(boundary=——-XXX) 가 Form 데이터간 구분을 지어준다.
+    - 바이너리 데이터 전송시 사용한다
+    - HTML Form 전송은 GET, POST만 지원한다.
+- 4. HTTP API를 통한 데이터 전송
+  - 회원 가입, 상품 주문, 데이터 변경을 할 수 있는데 서버 to 서버, 앱 클라이언트, 웹클라이언트에서 사용된다.
+  - 서버 to 서버
+    - 백엔드 시스템 통신
+  - 앱 클라이언트
+    - 아이폰, 안드로이드
+  - 웹 클라이언트
+    - HTML에서 From 전송 대신 자바 스크립트를 통한 통신에 사용한다.
+  - POST, PUT, PATCH 메세지 바디를 통해 데이터 전송
+  - GET 조회, 쿼리 파라미터로 데이터 전달
+  - Content-Type: application/json을 주로 사용(사실상 표준)
+    - TEXT, XML, JSON 등등
