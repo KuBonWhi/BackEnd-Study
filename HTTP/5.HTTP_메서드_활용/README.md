@@ -44,3 +44,40 @@
   - GET 조회, 쿼리 파라미터로 데이터 전달
   - Content-Type: application/json을 주로 사용(사실상 표준)
     - TEXT, XML, JSON 등등
+
+## HTTP API 설계 예시
+
+- 회원 관리 예시
+- HTTP API - 컬렉션
+  - POST 기반 등록
+  - 회원 관리 API제공
+- HTTP API - 스토어
+  - PUT 기반 등록
+  - 정적 컨텐츠 관리, 원격 파일 관리
+- HTML Form 사용
+  - 웹 페이지 회원 관리
+  - GET, POST만 지원
+
+### API 설계 - POST 기반 등록
+
+- 회원 목록 /members -> GET
+  - 회원 정렬조건이나 검색 조건이 필요하면 쿼리 파라미터를 설계하면 된다.
+- 회원 등록 /members -> POST
+- 회원 조회 /members/{id} -> GET
+  - 계층적 구조로 되어있어 컬렉션 안의 특정 아이디를 조회한다고 볼 수 있어 가독성도 높다.
+- 회원 수정 /members/{id} -> PATCH, PUT, POST
+  - PUT은 덮어쓰기고 PATCH는 부분적 업데이트이기에 회원 정보 수정은 PATCH가 좋다.
+  - 하지만, 수정이 전부 다 변경해줘야 하는 경우(ex: 게시판 글 수정하기)에는 PUT을 쓰는게 좋을수도 있다.
+- 회원 삭제 /members/{id} -> DELETE
+
+### POST - 신규 자원 등록 특징
+
+- 클라이언트는 등록될 리소스의 URI를 모든다
+  - 회원 등록 /members -> POST
+  - POST /members
+- 서버가 새로 등록된 리소스 URI를 생성해준다
+  - /members/100
+- 컬렉션
+  - 서버가 관리하는 리소스 디렉토리
+  - 서버가 리소스의 URI를 생성하고 관리
+  - 여기서 컬렉션은 /members
