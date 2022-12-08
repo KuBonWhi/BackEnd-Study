@@ -103,3 +103,41 @@
 ### 두 방식중 무엇을 많이 쓸까?
 
 - 대부분 실무에서는 POST 기반의 컬렉션을 사용하고 PUT 방식은 파일관리같은 특수한경우에만 사용된다.
+
+### HTML Form 사용
+
+- HTML FORM은 GET, POST만 지원한다.
+- AJAX 같은 기술을 가용해서 해결 가능
+- 순수하게 HTML, HTML FORM에서는 GET, POST만 사용 가능
+
+### HTML Form 설계
+
+- 회원 목록 /members -> GET
+- 회원 등록 폼 /members/new -> GET
+  - 회원 등록 버튼을 누르면 회원 등록 폼 페이지로 이동
+- 회원 등록 /members/new, /members -> POST
+  - /members/new 로 페이지 이동과 회원 등록시 URL 경로를 맞추고 전송 방식만 다르게 하는 방식과, 폼을 가져올때는 /new 를 통해 가져오지만 회원 등록은 /members 으로 하는 방식도 있다.
+  - 전자(경로를 맞추는 상황)로 사용을하면 Validation 작업으로 새로고침되어 동일페이지에 가야하는경우 간단하게 이전(동일) 페이지로 이동할 수 있다.
+- 회원 조회 /members/{id} -> GET
+- 회원 수정 폼 /members/{id}/edit -> GET
+- 회원 수정 /members/{id}/edit, /members/{id} -> POST
+- 회원 삭제 /members/{id}/delete -> POST
+  - 삭제인데 POST 메소드를 사용한다. HTML FORM에서는 GET, POST만 사용할 수 있다는 제약때문에 어쩔수 없이 URI 경로에 삭제하겠다는 행위를 작성함으로써 기능을 구현한다. 이런 URI를 컨트롤 URI라 한다.
+
+### 참고하면 좋은 URI 설계 개념
+
+- 문서
+  - 단일 개념(파일 하나, 객체 인스턴스, 데이터베이스 row)
+  - 예) /members/100, /file/star.jpg
+- 컬렉션
+  - 서버가 관리하는 리소스 디렉토리
+  - 서버가 리소스의 URI를 생성하고 관리
+  - 예) /members
+- 스토어
+  - 클라이언트가 관리하는 자원 저장소
+  - 클라이언트가 리소스의 URI를 알고 관리
+  - 예) /files
+- 컨트롤러, 컨트롤 URI
+  - 문서, 컬렉션, 스토어로 해결하기 어려운 추가 프로세스 실행
+  - 동사를 사용한다.
+  - 예) /members/{id}/delete
